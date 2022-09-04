@@ -5,10 +5,11 @@ import com.rest.app.entity.BookEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface BookMapper {
     BookMapper INSTANCE = Mappers.getMapper(BookMapper.class);
 
     BookDTO bookToBookDto(BookEntity bookEntity);
+
     BookEntity bookDtoToBook(BookDTO bookDTO);
 }

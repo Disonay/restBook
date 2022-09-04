@@ -1,35 +1,46 @@
 package com.rest.app.controller;
 
 import com.rest.app.dto.BookDTO;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.rest.app.dto.UpdatedBookDTO;
+import com.rest.app.service.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @RestController
+@RequestMapping("/book")
 public class Controller {
+
+    private final Service service;
+    @Autowired
+    public Controller(Service service) {
+        this.service = service;
+    }
+
     @PostMapping(value = "/create", consumes = "application/json")
-    public void createBook(@RequestBody BookDTO bookDTO) {
-
+    public void create(@Valid @RequestBody BookDTO bookDTO) {
+        service.create(bookDTO);
     }
 
-    @PostMapping(value = "/read", produces = "application/json")
-    public void getBook(@RequestParam("bookId") Long bookId) {
-
+    @GetMapping(value = "/read", produces = "application/json")
+    public BookDTO read(@RequestParam("bookId") Long bookId) {
+        return service.read(bookId);
     }
 
-    @PostMapping(value = "/read", produces = "application/json")
-    public void getFirstBooks(@RequestParam("number") Long number) {
-
+    @GetMapping(value = "/list", produces = "application/json")
+    public List<BookDTO> list(@RequestParam("author") String author) {
+        return service.list(author);
     }
 
     @PostMapping(value = "/update", consumes = "application/json")
-    public void updateBookInfo(@RequestBody BookDTO bookDTO) {
-
+    public void update(@Valid @RequestBody UpdatedBookDTO updatedBookDTO) {
+        service.update(updatedBookDTO);
     }
 
-    @PostMapping(value = "/clear")
+    @GetMapping(value = "/clear")
     public void clear() {
-
+        service.clear();
     }
 }

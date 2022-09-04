@@ -1,6 +1,7 @@
 package com.rest.app.entity;
 
 import lombok.Data;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,19 +10,20 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "books", schema = "public")
+@Table(name = "BOOK")
 @Data
+@Validated
 public class BookEntity {
     @Id
     @Column(name="id", nullable = false)
     private Long id;
 
-    @Column(name="author", nullable = false)
+    @Column(name="author", nullable = false, length = 50)
     private String author;
 
     @Column(name="name", nullable = false)
     private String name;
 
-    @Column(name="date", nullable = false)
-    private Date date;
+    @Column(name="publication_date", nullable = false)
+    private Date publicationDate;
 }
