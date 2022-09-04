@@ -32,12 +32,12 @@ flyway миграцию
 
 ### JDBC Connection Pool
 
-![JDBC Connection Pool](https://imgu.com/a/OTJxbpJ)
+![JDBC Connection Pool](https://i.imgur.com/6ImPhvt.png)
 
 ### Oracle Pool Param
 
-![Oracle Pool Param](https://imgur.com/a/Dn1Yvzq)
+![Oracle Pool Param](https://i.imgur.com/BmVz2tW.png)
 
 ### JDBC Resources
 
-![JDBC Resources](https://imgur.com/a/NKwz0XC)
+![JDBC Resources](https://i.imgur.com/gFt0pkb.png)
