@@ -28,6 +28,11 @@ Endpoints:
 В профиле **prod** происходит подключение к oracle бд, параметры для подключения получаются через JNDI. Cхема БД через 
 flyway миграцию
 
+## Data Bases
+
+Postgres бд разворачивалась на heroku.
+Oracle бд разворачивалась на VM, образ Oracle DB Developer VM
+
 ## Glassfish JNDI
 
 ### JDBC Connection Pool
@@ -41,3 +46,8 @@ flyway миграцию
 ### JDBC Resources
 
 ![JDBC Resources](https://i.imgur.com/gFt0pkb.png)
+
+## Glassfish Deploy
+
+![Glassfish Deploy](https://i.imgur.com/JQ1ENPu.png)
+
