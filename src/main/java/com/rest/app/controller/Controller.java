@@ -2,7 +2,7 @@ package com.rest.app.controller;
 
 import com.rest.app.dto.BookDTO;
 import com.rest.app.dto.BookNewInfo;
-import com.rest.app.service.BookService;
+import com.rest.app.service.BookManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -14,29 +14,29 @@ import java.util.List;
 @RequestMapping("/book")
 @RequiredArgsConstructor
 public class Controller {
-    private final BookService bookService;
+    private final BookManager bookManager;
     @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void create(@Valid @RequestBody BookDTO bookDTO) {
-        bookService.create(bookDTO);
+        bookManager.create(bookDTO);
     }
 
     @GetMapping(value = "/read", produces = MediaType.APPLICATION_JSON_VALUE)
     public BookDTO read(@RequestParam("bookId") Long bookId) {
-        return bookService.read(bookId);
+        return bookManager.read(bookId);
     }
 
     @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<BookDTO> list(@RequestParam("author") String author) {
-        return bookService.list(author);
+        return bookManager.list(author);
     }
 
     @PostMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void update(@Valid @RequestBody BookNewInfo bookNewInfo) {
-        bookService.update(bookNewInfo);
+        bookManager.update(bookNewInfo);
     }
 
     @DeleteMapping(value = "/delete")
     public void delete(@RequestParam("bookId") Long bookId) {
-        bookService.delete(bookId);
+        bookManager.delete(bookId);
     }
 }
