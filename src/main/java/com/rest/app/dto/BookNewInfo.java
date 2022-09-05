@@ -1,15 +1,13 @@
 package com.rest.app.dto;
 
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Data
-public class UpdatedBookDTO {
+public class BookNewInfo {
     @NotNull
     private Long id;
 
@@ -18,7 +16,5 @@ public class UpdatedBookDTO {
 
     private String newName;
 
-    @Past
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date newPublicationDate;
 }

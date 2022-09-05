@@ -1,9 +1,10 @@
 package com.rest.app.controller;
 
 import com.rest.app.dto.BookDTO;
-import com.rest.app.dto.UpdatedBookDTO;
-import com.rest.app.service.Service;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.rest.app.dto.BookNewInfo;
+import com.rest.app.service.BookService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -11,36 +12,31 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/book")
+@RequiredArgsConstructor
 public class Controller {
-
-    private final Service service;
-    @Autowired
-    public Controller(Service service) {
-        this.service = service;
-    }
-
-    @PostMapping(value = "/create", consumes = "application/json")
+    private final BookService bookService;
+    @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void create(@Valid @RequestBody BookDTO bookDTO) {
-        service.create(bookDTO);
+        bookService.create(bookDTO);
     }
 
-    @GetMapping(value = "/read", produces = "application/json")
+    @GetMapping(value = "/read", produces = MediaType.APPLICATION_JSON_VALUE)
     public BookDTO read(@RequestParam("bookId") Long bookId) {
-        return service.read(bookId);
+        return bookService.read(bookId);
     }
 
-    @GetMapping(value = "/list", produces = "application/json")
+    @GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<BookDTO> list(@RequestParam("author") String author) {
-        return service.list(author);
+        return bookService.list(author);
     }
 
-    @PostMapping(value = "/update", consumes = "application/json")
-    public void update(@Valid @RequestBody UpdatedBookDTO updatedBookDTO) {
-        service.update(updatedBookDTO);
+    @PostMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void update(@Valid @RequestBody BookNewInfo bookNewInfo) {
+        bookService.update(bookNewInfo);
     }
 
-    @GetMapping(value = "/clear")
-    public void clear() {
-        service.clear();
+    @DeleteMapping(value = "/delete")
+    public void delete(@RequestParam("bookId") Long bookId) {
+        bookService.delete(bookId);
     }
 }

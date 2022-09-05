@@ -13,7 +13,7 @@ Endpoints:
 * create 
 * read - Получение книги по id (параметр bookId)
 * update
-* delete 
+* delete - Удаление книги по id (параметр bookId)
 * list - Список книг одного автора (параметр author)
 
 ## Spring profiles
