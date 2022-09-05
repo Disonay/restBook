@@ -2,7 +2,7 @@ package com.rest.app.controller;
 
 import com.rest.app.dto.BookDTO;
 import com.rest.app.dto.BookNewInfo;
-import com.rest.app.service.BookManager;
+import com.rest.app.manager.BookManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

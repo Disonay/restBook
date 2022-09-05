@@ -1,9 +1,10 @@
-package com.rest.app.service;
+package com.rest.app.manager;
 
 import com.rest.app.dto.BookDTO;
 import com.rest.app.dto.BookNewInfo;
 import com.rest.app.provider.BookProvider;
-import com.rest.app.validation.BookAlreadyExistValidator;
+import com.rest.app.validation.ExistIdValidator;
+import com.rest.app.validation.NewIdValidator;
 import com.rest.app.worker.BookCreator;
 import com.rest.app.worker.BookDeleter;
 import com.rest.app.worker.BookUpdater;
@@ -20,15 +21,18 @@ public class BookManager {
     private final BookUpdater updater;
     private final BookProvider provider;
 
-    private final BookAlreadyExistValidator bookAlreadyExistValidator;
+    private final NewIdValidator newIdValidator;
+    private final ExistIdValidator existIdValidator;
 
     public void create(BookDTO bookDTO) {
-        bookAlreadyExistValidator.validate(bookDTO.getId());
+        newIdValidator.validate(bookDTO.getId());
         creator.payload(bookDTO).execute();
     }
 
     public BookDTO read(Long bookId) {
-       return provider.getBookById(bookId);
+        existIdValidator.validate(bookId);
+
+        return provider.getBookById(bookId);
     }
 
     public List<BookDTO> list(String author) {
@@ -36,10 +40,12 @@ public class BookManager {
     }
 
     public void update(BookNewInfo bookNewInfo) {
+        existIdValidator.validate(bookNewInfo.getId());
         updater.payload(bookNewInfo).execute();
     }
 
     public void delete(Long bookId) {
+        existIdValidator.validate(bookId);
         deleter.payload(bookId).execute();
     }
 }
