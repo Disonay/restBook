@@ -1,13 +1,14 @@
 package com.rest.app.worker;
 
 import com.rest.app.repository.BookRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BookDeleter extends Worker<Long> {
-    public BookDeleter(BookRepository bookRepository) {
-        super(bookRepository);
-    }
+@RequiredArgsConstructor
+public class BookDeleter implements Worker<Long> {
+    private final BookRepository bookRepository;
+    private Long data;
 
     @Override
     public BookDeleter payload(Long data) {

@@ -3,54 +3,7 @@
 # ===============================
 
 spring:
-  profiles:
-    active: dev
   jackson:
     date-format: yyyy-MM-dd
-
----
-# ===============================
-# DEV PROFILE CONFIG
-# ===============================
-
-spring:
-  config:
-    activate:
-      on-profile: dev
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://ec2-54-155-110-181.eu-west-1.compute.amazonaws.com:5432/ddjf3d1tbib3m7
-    username: vngdikwmjlkvfy
-    password: 1e809d84f5ddd7a97f26ffd0cbb7f73a3efcc87df15731f27f08b84028967ddf
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        ddl-auto: update
-    show-sql: true
-  flyway:
-    enabled: false
-server:
-  port: 5050
-
----
-# ===============================
-# PROD PROFILE CONFIG
-# ===============================
-
-spring:
-  config:
-    activate:
-      on-profile: prod
-  datasource:
-    jndi-name: jdbc/SqlServer
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.Oracle12cDialect
-        ddl-auto: none
-    show-sql: true
-  flyway:
-    enabled: true
-    baselineOnMigrate: true
-    validate-on-migrate: true
+  profiles:
+    active: '@spring.profiles.active@'

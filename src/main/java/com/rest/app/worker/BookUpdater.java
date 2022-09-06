@@ -3,16 +3,17 @@ package com.rest.app.worker;
 import com.rest.app.dto.BookNewInfo;
 import com.rest.app.entity.BookEntity;
 import com.rest.app.repository.BookRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 import java.util.Optional;
 
 @Component
-public class BookUpdater extends Worker<BookNewInfo>{
-    public BookUpdater(BookRepository bookRepository) {
-        super(bookRepository);
-    }
+@RequiredArgsConstructor
+public class BookUpdater implements Worker<BookNewInfo> {
+    private final BookRepository bookRepository;
+    private BookNewInfo data;
 
     @Override
     public Worker<BookNewInfo> payload(BookNewInfo data) {

@@ -1,0 +1,20 @@
+# ===============================
+# PROD PROFILE CONFIG
+# ===============================
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    jndi-name: jdbc/SqlServer
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle12cDialect
+        ddl-auto: none
+    show-sql: true
+  flyway:
+    enabled: true
+    baselineOnMigrate: true
+    validate-on-migrate: true
