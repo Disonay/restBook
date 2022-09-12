@@ -13,28 +13,30 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BookUpdater implements Worker<BookNewInfo> {
     private final BookRepository bookRepository;
-    private BookNewInfo data;
+    private Long bookId;
+    private BookNewInfo bookNewInfo;
 
-    @Override
-    public Worker<BookNewInfo> payload(BookNewInfo data) {
-        this.data = data;
+
+    public Worker<BookNewInfo> payload(Long bookId, BookNewInfo data) {
+        this.bookId = bookId;
+        this.bookNewInfo = data;
 
         return this;
     }
 
     @Override
     public void execute() {
-        Optional<BookEntity> optionalBook = bookRepository.findById(data.getId());
+        Optional<BookEntity> optionalBook = bookRepository.findById(bookId);
         BookEntity updatebleBook = optionalBook.get();
 
-        if (!Objects.isNull(data.getNewAuthor())) {
-            updatebleBook.setAuthor(data.getNewAuthor());
+        if (!Objects.isNull(bookNewInfo.getAuthor())) {
+            updatebleBook.setAuthor(bookNewInfo.getAuthor());
         }
-        if (!Objects.isNull(data.getNewName())) {
-            updatebleBook.setName(data.getNewName());
+        if (!Objects.isNull(bookNewInfo.getName())) {
+            updatebleBook.setName(bookNewInfo.getName());
         }
-        if (!Objects.isNull(data.getNewPublicationDate())) {
-            updatebleBook.setPublicationDate(data.getNewPublicationDate());
+        if (!Objects.isNull(bookNewInfo.getPublicationDate())) {
+            updatebleBook.setPublicationDate(bookNewInfo.getPublicationDate());
         }
 
         bookRepository.save(updatebleBook);

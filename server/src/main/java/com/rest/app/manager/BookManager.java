@@ -20,12 +20,9 @@ public class BookManager {
     private final BookDeleter deleter;
     private final BookUpdater updater;
     private final BookProvider provider;
-
-    private final NewIdValidator newIdValidator;
     private final ExistIdValidator existIdValidator;
 
     public void create(BookDTO bookDTO) {
-        newIdValidator.validate(bookDTO.getId());
         creator.payload(bookDTO).execute();
     }
 
@@ -35,13 +32,13 @@ public class BookManager {
         return provider.getBookById(bookId);
     }
 
-    public List<BookDTO> list(String author) {
-        return provider.getBooksByAuthor(author);
+    public List<BookDTO> list() {
+        return provider.getAllBooks();
     }
 
-    public void update(BookNewInfo bookNewInfo) {
-        existIdValidator.validate(bookNewInfo.getId());
-        updater.payload(bookNewInfo).execute();
+    public void update(Long bookId, BookNewInfo bookNewInfo) {
+        existIdValidator.validate(bookId);
+        updater.payload(bookId, bookNewInfo).execute();
     }
 
     public void delete(Long bookId) {

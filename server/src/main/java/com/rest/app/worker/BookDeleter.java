@@ -8,17 +8,16 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class BookDeleter implements Worker<Long> {
     private final BookRepository bookRepository;
-    private Long data;
+    private Long id;
 
-    @Override
     public BookDeleter payload(Long data) {
-        this.data = data;
+        this.id = data;
 
         return this;
     }
 
     @Override
     public void execute() {
-        bookRepository.deleteById(data);
+        bookRepository.deleteById(id);
     }
 }

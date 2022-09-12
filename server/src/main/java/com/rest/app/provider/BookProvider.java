@@ -21,7 +21,7 @@ public class BookProvider {
         return BookMapper.INSTANCE.bookToBookDto(optionalBook.get());
     }
 
-    public List<BookDTO> getBooksByAuthor(String author) {
-        return BookMapper.INSTANCE.bookToBookDto(bookRepository.findBookEntitiesByAuthor(author));
+    public List<BookDTO> getAllBooks() {
+        return BookMapper.INSTANCE.bookToBookDto(bookRepository.findAll());
     }
 }

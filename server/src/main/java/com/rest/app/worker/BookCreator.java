@@ -10,17 +10,16 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class BookCreator implements Worker<BookDTO> {
     private final BookRepository bookRepository;
-    private BookDTO data;
+    private BookDTO bookDTO;
 
-    @Override
     public BookCreator payload(BookDTO data) {
-        this.data = data;
+        this.bookDTO = data;
 
         return this;
     }
 
     @Override
     public void execute() {
-        bookRepository.save(BookMapper.INSTANCE.bookDtoToBook(data));
+        bookRepository.save(BookMapper.INSTANCE.bookDtoToBook(bookDTO));
     }
 }
