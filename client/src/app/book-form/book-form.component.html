@@ -1,0 +1,31 @@
+<div class="mat-elevation-z8 container form-container">
+  <h2 class="form-element mat-headline">{{title}}</h2>
+  <form [formGroup]="bookForm">
+    <div class="form-element">
+      <mat-form-field appearance="fill">
+        <mat-label>Автор</mat-label>
+        <input matInput [(ngModel)]="book.author" matTooltip="ФИО автора в формате Фамилия И. О." type="text"
+               formControlName="author" required pattern="[А-Я][а-я]+ [А-Я][.] [А-Я][.]">
+      </mat-form-field>
+    </div>
+    <div class="form-element">
+      <mat-form-field appearance="fill">
+        <mat-label>Название книги</mat-label>
+        <input matInput [(ngModel)]="book.name" type="text" formControlName="name" required>
+      </mat-form-field>
+    </div>
+    <div class="form-element">
+      <mat-form-field appearance="fill">
+        <mat-label>Дата публикации</mat-label>
+        <input matInput [(ngModel)]="book.publicationDate" type="date" formControlName="publicationDate" required>
+      </mat-form-field>
+    </div>
+    <div class="form-element-button">
+      <button mat-raised-button (click)="onSubmit()" [disabled]="!bookForm.valid">Отправить
+        <mat-icon *ngIf="loading">
+          <mat-spinner color="accent" diameter="20"></mat-spinner>
+        </mat-icon>
+      </button>
+    </div>
+  </form>
+</div>
