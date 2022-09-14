@@ -12,7 +12,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
-import {CalendarModule} from "primeng/calendar";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
@@ -43,7 +42,6 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     BrowserAnimationsModule,
     MatTableModule,
     MatSortModule,
-    CalendarModule,
     MatInputModule,
     MatButtonModule,
     MatMenuModule,

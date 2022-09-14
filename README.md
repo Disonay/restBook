@@ -13,3 +13,9 @@ RESTful API, который предоставляет CRUDL операции д
 
 Серверная часть - Spring Boot 2  
 Клиентская часть - Angular 8
+
+## Сброка проекта для деплоя на glassfish
+
+`mvn clean package -P prod`
+
+*Для корректной работы необходимо при деплое использовать следующий Сontext Path: `/books-app`*
