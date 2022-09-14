@@ -18,4 +18,3 @@ RESTful API, который предоставляет CRUDL операции д
 
 `mvn clean package -P prod`
 
-*Для корректной работы необходимо при деплое использовать следующий Сontext Path: `/books-app`*
