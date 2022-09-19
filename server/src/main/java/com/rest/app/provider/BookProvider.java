@@ -1,6 +1,6 @@
 package com.rest.app.provider;
 
-import com.rest.app.dto.BookDTO;
+import com.rest.app.dto.book.BookDTO;
 import com.rest.app.entity.BookEntity;
 import com.rest.app.mapper.BookMapper;
 import com.rest.app.repository.BookRepository;
@@ -12,16 +12,19 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class BookProvider {
+public class BookProvider implements Provider<BookDTO> {
     private final BookRepository bookRepository;
+    private final BookMapper bookMapper;
 
-    public BookDTO getBookById(Long bookId) {
+    @Override
+    public BookDTO getEntityById(Long bookId) {
         Optional<BookEntity> optionalBook = bookRepository.findById(bookId);
 
-        return BookMapper.INSTANCE.bookToBookDto(optionalBook.get());
+        return bookMapper.bookToBookDto(optionalBook.get());
     }
 
-    public List<BookDTO> getAllBooks() {
-        return BookMapper.INSTANCE.bookToBookDto(bookRepository.findAll());
+    @Override
+    public List<BookDTO> getAllEntities() {
+        return bookMapper.bookToBookDto(bookRepository.findAll());
     }
 }

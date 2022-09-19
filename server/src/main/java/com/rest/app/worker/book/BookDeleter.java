@@ -1,6 +1,7 @@
-package com.rest.app.worker;
+package com.rest.app.worker.book;
 
 import com.rest.app.repository.BookRepository;
+import com.rest.app.worker.Worker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

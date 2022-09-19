@@ -8,22 +8,24 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "BOOK")
+@Table(name = "BOOK", indexes = @Index(name = "title_index", columnList = "title"))
 @Validated
 @Setter
 @Getter
 public class BookEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @SequenceGenerator(name = "book_seq", sequenceName = "BOOK_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_seq")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name="author", nullable = false, length = 50)
-    private String author;
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
+    private AuthorEntity author;
 
-    @Column(name="name", nullable = false)
-    private String name;
+    @Column(name = "title", nullable = false)
+    private String title;
 
-    @Column(name="publication_date", nullable = false)
+    @Column(name = "publication_date", nullable = false)
     private Date publicationDate;
 }

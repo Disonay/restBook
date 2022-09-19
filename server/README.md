@@ -1,12 +1,19 @@
 # Book Api Server
 
-Endpoints:
-* POST: books
-* GET: id
-* PUT: id
-* DELETE: id
-* GET: books
+Endpoints for books:
+* POST: /api/books/
+* GET: /api/books/id
+* PUT: /api/books/id
+* DELETE: /api/books/id
+* GET: /api/books/
 
+Endpoints for authors:
+* POST: /api/authors/
+* GET: /api/authors/id
+* PUT: /api/authors/id
+* DELETE: /api/authors/id
+* GET: /api/authors/books
+* 
 ## Spring profiles
 
 Используются два профиля:

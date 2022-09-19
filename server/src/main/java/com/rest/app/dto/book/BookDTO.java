@@ -1,11 +1,10 @@
-package com.rest.app.dto;
+package com.rest.app.dto.book;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Data
@@ -14,11 +13,10 @@ public class BookDTO {
     private Long id;
 
     @NotNull
-    @Pattern(regexp = "[А-Я][а-я]+ [А-Я][.] [А-Я][.]")
-    private String author;
+    private Long authorId;
 
     @NotNull
-    private String name;
+    private String title;
 
     @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
