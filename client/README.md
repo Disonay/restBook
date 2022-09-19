@@ -10,24 +10,26 @@
 * Кнопки удаления, редактирования, добавления книги
 * Кнопка таблицы книг
 
+Аналогичные возможности представлены и для авторов
+
 ## Примеры 
 
 ### Таблица книг
 
-![Table](https://i.imgur.com/d0JCpJo.png)
+![BookTable](https://i.imgur.com/d0JCpJo.png)
+
+### Таблица авторов
+
+![AuthorTable](https://i.imgur.com/G3Z1aMG.png)
 
 ### Добавление книги
 
-![Create](https://i.imgur.com/W2zvLzP.png)
+![CreateBook](https://i.imgur.com/UlHr4zT.png)
 
-### Валидация при добавлении книги
+### Добавление автора
 
-![Validation](https://i.imgur.com/uzu2bf2.png)
+![CreateAuthor](https://i.imgur.com/UlHr4zT.png![img.png](img.png))
 
-### Отправка валидной книги
+### Выбор автора при создании/обновлении книги
 
-![Submit](https://i.imgur.com/zoEWdQD.png)
-
-### Редактирование книги
-
-![Change](https://i.imgur.com/VKlI09Y.png)
+![Select](https://i.imgur.com/nM7mRbf.png)

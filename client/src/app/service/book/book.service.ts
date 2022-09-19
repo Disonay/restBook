@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Book} from "../model/book";
-import {environment} from "../../environments/environment";
+import {Book} from "../../model/book/book";
+import {environment} from "../../../environments/environment";
+import {Service} from "../service";
 
 @Injectable()
-export class BookService {
+export class BookService implements Service<Book>{
 
   private readonly booksUrl: string;
 
   constructor(private http: HttpClient) {
-    this.booksUrl = environment.baseURL;
+    this.booksUrl = environment.booksBaseURL;
   }
 
   public findAll(): Observable<any> {

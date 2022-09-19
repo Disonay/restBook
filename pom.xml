@@ -23,7 +23,31 @@
     </properties>
 
     <build>
+
+        <finalName>restBook</finalName>
         <sourceDirectory>server/src/main/java</sourceDirectory>
+
+        <resources>
+            <resource>
+                <directory>server/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+        </plugins>
+
     </build>
 
     <dependencies>
@@ -115,21 +139,34 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>3.2.3</version>
+                        <configuration>
+                            <webResources>
+                                <resource>
+                                    <directory>server/src/main/webapp</directory>
+                                    <includes>
+                                        <include>WEB-INF/**</include>
+                                    </includes>
+                                </resource>
+                            </webResources>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
+
         <profile>
             <id>prod</id>
             <properties>
                 <spring.profiles.active>prod</spring.profiles.active>
             </properties>
             <build>
-                <finalName>restBook</finalName>
-                <resources>
-                    <resource>
-                        <directory>server/src/main/resources</directory>
-                        <filtering>true</filtering>
-                    </resource>
-                </resources>
-
                 <plugins>
 
                     <plugin>
@@ -171,10 +208,6 @@
                     </plugin>
 
                     <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                    </plugin>
-                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>
                         <version>3.2.3</version>
@@ -191,12 +224,6 @@
                                 </resource>
                             </webResources>
                         </configuration>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <version>3.8.1</version>
                     </plugin>
 
                 </plugins>

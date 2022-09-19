@@ -4,14 +4,16 @@
     <div class="form-element">
       <mat-form-field appearance="fill">
         <mat-label>Автор</mat-label>
-        <input matInput [(ngModel)]="book.author" matTooltip="ФИО автора в формате Фамилия И. О." type="text"
-               formControlName="author" required pattern="[А-Я][а-я]+ [А-Я][.] [А-Я][.]">
+        <mat-select formControlName="authorId">
+          <mat-option *ngFor="let author of authors"
+                      [value]="author.id" > {{author.surname + " " + author.name + " " + author.middleName}}</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <div class="form-element">
       <mat-form-field appearance="fill">
         <mat-label>Название книги</mat-label>
-        <input matInput [(ngModel)]="book.name" type="text" formControlName="name" required>
+        <input matInput [(ngModel)]="book.title" type="text" formControlName="title" required>
       </mat-form-field>
     </div>
     <div class="form-element">

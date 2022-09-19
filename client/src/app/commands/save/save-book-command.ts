@@ -1,27 +1,24 @@
 import {Command} from "../command";
-import {BookService} from "../../service/book.service";
+import {BookService} from "../../service/book/book.service";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {Book} from "../../model/book";
+import {Book} from "../../model/book/book";
 
 @Injectable({
   providedIn: 'root'
 })
-export class UpdateCommand implements Command {
-  id : number
+export class SaveBookCommand implements Command {
   book: Book
 
   constructor(private bookService: BookService) {
   }
 
-  payload(id: number, book: Book): UpdateCommand {
+  payload(book: Book): Command {
     this.book = book;
-    this.id = id;
-
     return this
   }
 
   execute(): Observable<any> {
-    return this.bookService.update(this.id, this.book)
+    return this.bookService.save(this.book)
   }
 }

@@ -1,37 +1,44 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Book} from "../model/book";
-import {SaveCommand} from "../commands/save/save-command";
-import {UpdateCommand} from "../commands/update/update-command";
+import {Book} from "../../model/book/book";
+import {SaveBookCommand} from "../../commands/save/save-book-command";
+import {UpdateBookCommand} from "../../commands/update/update-book-command";
+import {Author} from "../../model/author/author";
+import {ListAuthorCommand} from "../../commands/list/list-author-command";
 
 @Component({
   selector: 'app-book-form',
   templateUrl: './book-form.component.html',
   styleUrls: ['./book-form.component.css']
 })
-export class BookFormComponent {
+export class BookFormComponent implements OnInit {
   title: String
   bookForm: FormGroup
   book: Book = new Book()
+  authors: Author[]
   loading: boolean = false
   isUpdate: boolean = false
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder,
-              private saver: SaveCommand,
-              private updater: UpdateCommand) {
-    this.createForm()
+              private saver: SaveBookCommand,
+              private updater: UpdateBookCommand,
+              private allAuthorsGetter: ListAuthorCommand) {
   }
 
-  private createForm() {
+  ngOnInit(): void {
     this.route.params.subscribe(params => {
-      if (params["id"] && params["name"] && params["author"] && params["publicationDate"]) {
+      if (params["id"] && params["title"] && params["authorId"] && params["publicationDate"]) {
         this.isUpdate = true
-        this.book = new Book(params["id"], params["name"], params["author"], params["publicationDate"])
+        this.book = new Book(params["id"], params["title"], params["authorId"], params["publicationDate"])
       }
     });
+
+    this.allAuthorsGetter.execute().subscribe(data => {
+      this.authors = data
+    })
 
     if (this.isUpdate) {
       this.title = "Редактировать книгу"
@@ -40,8 +47,8 @@ export class BookFormComponent {
     }
 
     this.bookForm = this.fb.group({
-      author: ['', [Validators.required, Validators.pattern("[А-Я][а-я]+ [А-Я][.] [А-Я][.]")]],
-      name: ['', Validators.required],
+      authorId: ['', Validators.required],
+      title: ['', Validators.required],
       publicationDate: ['', Validators.required],
     });
   }
@@ -58,6 +65,6 @@ export class BookFormComponent {
   }
 
   gotoBookList() {
-    this.router.navigate([''])
+    this.router.navigate(['books'])
   }
 }

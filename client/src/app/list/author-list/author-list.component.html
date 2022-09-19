@@ -1,0 +1,47 @@
+<div class="mat-elevation-z8 container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let author"> {{author.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="surname">
+      <th mat-header-cell *matHeaderCellDef> Фамилия автора </th>
+      <td mat-cell *matCellDef="let author"> {{author.surname}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Имя автора </th>
+      <td mat-cell *matCellDef="let author"> {{author.name}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="middleName">
+      <th mat-header-cell *matHeaderCellDef> Отчество автора </th>
+      <td mat-cell *matCellDef="let author"> {{author.middleName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="menu">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let author">
+        <button mat-icon-button [matMenuTriggerFor]="mainMenu" aria-label="" *ngIf="author.id != deletingAuthorId">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #mainMenu="matMenu">
+          <button mat-menu-item (click)="onUpdate(author)">Edit</button>
+          <button mat-menu-item (click)="onDelete(author.id)">Delete</button>
+        </mat-menu>
+        <mat-icon *ngIf="author.id == deletingAuthorId">
+          <mat-spinner color="accent" diameter="20"></mat-spinner>
+        </mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let author; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+</div>

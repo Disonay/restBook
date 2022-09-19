@@ -2,7 +2,16 @@
   <mat-toolbar-row>
     <span>Books</span>
     <span class="example-spacer"></span>
-    <button mat-button [routerLink]="''"> Список </button>
-    <button mat-button [routerLink]="'create'"> Создать </button>
+    <button mat-button [matMenuTriggerFor]="books"> Книги </button>
+    <mat-menu #books="matMenu">
+      <button mat-menu-item [routerLink]="'books'"> Список </button>
+      <button mat-menu-item [routerLink]="'books/create'"> Создать </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="authors"> Авторы </button>
+    <mat-menu #authors="matMenu">
+      <button mat-menu-item [routerLink]="'authors'"> Список </button>
+      <button mat-menu-item [routerLink]="'authors/create'"> Создать </button>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>

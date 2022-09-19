@@ -2,12 +2,17 @@
 
 ## Описание
 
-RESTful API, который предоставляет CRUDL операции для ресурса "книги"
+RESTful API, который предоставляет CRUDL операции для ресурсов "книги" и "авторы" 
 
 Книга:
-* name
+* title
 * author
 * publication_date
+
+Автор:
+* surname
+* name
+* middle_name
 
 ## Стек
 

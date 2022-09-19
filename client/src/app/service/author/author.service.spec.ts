@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TableResolverService } from './table-resolver.service';
+import { AuthorService } from './author.service';
 
-describe('TableResolverService', () => {
+describe('AuthorService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: TableResolverService = TestBed.get(TableResolverService);
+    const service: AuthorService = TestBed.get(AuthorService);
     expect(service).toBeTruthy();
   });
 });

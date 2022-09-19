@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {Book} from "../model/book";
+import {Book} from "../../model/book/book";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
-import {DeleteCommand} from "../commands/delete/delete-command";
+import {DeleteBookCommand} from "../../commands/delete/delete-book-command";
 
 @Component({
   selector: 'app-book-list',
@@ -11,14 +11,14 @@ import {DeleteCommand} from "../commands/delete/delete-command";
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements AfterViewInit, OnInit {
-  displayedColumns: string[] = ['id', 'name', 'author', 'publicationDate', 'menu'];
+  displayedColumns: string[] = ['id', 'name', 'authorId', 'publicationDate', 'menu'];
   dataSource: MatTableDataSource<Book> = new MatTableDataSource<Book>()
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   deletingBookId: number
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private deleter: DeleteCommand) {
+              private deleter: DeleteBookCommand) {
   }
 
   ngOnInit(): void {
@@ -37,10 +37,10 @@ export class BookListComponent implements AfterViewInit, OnInit {
   }
 
   onUpdate(book: Book) {
-    this.router.navigate(['update', {
+    this.router.navigate(['books/update', {
       id: book.id,
-      name: book.name,
-      author: book.author,
+      title: book.title,
+      authorId: book.authorId,
       publicationDate: book.publicationDate
     }])
   }

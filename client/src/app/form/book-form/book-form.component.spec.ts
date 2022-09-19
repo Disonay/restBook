@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BookFormComponent } from './book-form.component';
+import {MatSelectModule} from "@angular/material/select";
 
 describe('BookFormComponent', () => {
   let component: BookFormComponent;
@@ -8,6 +9,7 @@ describe('BookFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ MatSelectModule ],
       declarations: [ BookFormComponent ]
     })
     .compileComponents();

@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {BookFormComponent} from "./book-form/book-form.component";
-import {BookListComponent} from "./book-list/book-list.component";
+import {BookFormComponent} from "./form/book-form/book-form.component";
+import {BookListComponent} from "./list/book-list/book-list.component";
 import {HttpClientModule} from "@angular/common/http";
-import {BookService} from "./service/book.service";
+import {BookService} from "./service/book/book.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -25,6 +25,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MenuComponent} from "./menu/menu.component";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { AuthorListComponent } from './list/author-list/author-list.component';
+import { AuthorFormComponent } from './form/author-form/author-form.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -32,6 +35,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     BookFormComponent,
     BookListComponent,
     MenuComponent,
+    AuthorListComponent,
+    AuthorFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +58,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatCardModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSelectModule
   ],
   providers: [BookService],
   bootstrap: [AppComponent]

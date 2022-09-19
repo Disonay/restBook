@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
   environmentName: "PROD",
-  baseURL: "./books/"
+  booksBaseURL: "./api/books/",
+  authorsBaseURL: "./api/authors/"
 };
