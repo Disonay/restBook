@@ -16,7 +16,7 @@
 
 ### Таблица книг
 
-![BookTable](https://i.imgur.com/d0JCpJo.png)
+![BookTable](https://i.imgur.com/jGtsbvB.png)
 
 ### Таблица авторов
 

@@ -6,7 +6,7 @@ RESTful API, который предоставляет CRUDL операции д
 
 Книга:
 * title
-* author
+* author_id
 * publication_date
 
 Автор:
