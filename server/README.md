@@ -5,6 +5,7 @@ Endpoints for books:
 * GET: /api/books/id
 * PUT: /api/books/id
 * DELETE: /api/books/id
+* DELETE: /api/books/soft/id
 * GET: /api/books/
 
 Endpoints for authors:
