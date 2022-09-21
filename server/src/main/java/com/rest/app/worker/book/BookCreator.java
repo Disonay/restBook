@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class BookCreator implements Worker<BookDTO> {
+public class BookCreator implements Worker {
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
 
     private BookDTO bookDTO;
 
-    public BookCreator payload(BookDTO data) {
+    public Worker payload(BookDTO data) {
         this.bookDTO = data;
 
         return this;

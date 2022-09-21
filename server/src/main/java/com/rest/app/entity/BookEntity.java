@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "BOOK", indexes = @Index(name = "title_index", columnList = "title"))
+@Table(name = "BOOK", indexes = @Index(name = "book_title_i", columnList = "title"))
 @Validated
 @Setter
 @Getter
@@ -19,7 +19,7 @@ public class BookEntity {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "author_id", nullable = false)
     private AuthorEntity author;
 

@@ -26,8 +26,12 @@ export class BookService implements Service<Book>{
     return this.http.delete(`${this.booksUrl}` + `${id}`)
   }
 
+  public archive(id: Number) {
+    return this.http.delete(`${this.booksUrl}` + 'soft/' + `${id}`)
+  }
+
   public get(id: Number): Observable<Book> {
-    return this.http.get<Book>(`${this.booksUrl}` + `${id}`)
+    return this.http.get<Book>(`${this.booksUrl}` +  `${id}`)
   }
 
   public update(id: number, book: Book) {

@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {DeleteBookCommand} from "../../commands/delete/delete-book-command";
+import {ArchiveBookCommand} from "../../commands/archive/archive-book-command";
 
 @Component({
   selector: 'app-book-list',
@@ -11,14 +12,15 @@ import {DeleteBookCommand} from "../../commands/delete/delete-book-command";
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements AfterViewInit, OnInit {
-  displayedColumns: string[] = ['id', 'name', 'authorId', 'publicationDate', 'menu'];
+  displayedColumns: string[] = ['id', 'name', 'author', 'publicationDate', 'menu'];
   dataSource: MatTableDataSource<Book> = new MatTableDataSource<Book>()
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  deletingBookId: number
+  waitingBookId: number
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private deleter: DeleteBookCommand) {
+              private deleter: DeleteBookCommand,
+              private archiver: ArchiveBookCommand) {
   }
 
   ngOnInit(): void {
@@ -30,8 +32,16 @@ export class BookListComponent implements AfterViewInit, OnInit {
   }
 
   onDelete(id: number) {
-    this.deletingBookId = id
+    this.waitingBookId = id
     this.deleter.payload(id).execute().subscribe(result => {
+      this.dataSource.data = this.dataSource.data.filter(item => item.id != id)
+    })
+  }
+
+  onArchive(id: number) {
+    this.waitingBookId = id
+
+    this.archiver.payload(id).execute().subscribe(result => {
       this.dataSource.data = this.dataSource.data.filter(item => item.id != id)
     })
   }
@@ -40,7 +50,7 @@ export class BookListComponent implements AfterViewInit, OnInit {
     this.router.navigate(['books/update', {
       id: book.id,
       title: book.title,
-      authorId: book.authorId,
+      author: book.author,
       publicationDate: book.publicationDate
     }])
   }

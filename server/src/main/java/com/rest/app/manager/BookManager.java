@@ -3,8 +3,9 @@ package com.rest.app.manager;
 import com.rest.app.dto.book.BookDTO;
 import com.rest.app.dto.book.BookNewInfo;
 import com.rest.app.provider.BookProvider;
-import com.rest.app.validation.author.ExistAuthorIdValidator;
+import com.rest.app.validation.author.ExistAuthorValidator;
 import com.rest.app.validation.book.ExistBookIdValidator;
+import com.rest.app.worker.book.BookArchiver;
 import com.rest.app.worker.book.BookCreator;
 import com.rest.app.worker.book.BookDeleter;
 import com.rest.app.worker.book.BookUpdater;
@@ -20,13 +21,15 @@ public class BookManager implements Manager<BookDTO, BookNewInfo> {
     private final BookDeleter deleter;
     private final BookUpdater updater;
     private final BookProvider provider;
+
+    private final BookArchiver archiver;
     private final ExistBookIdValidator existBookIdValidator;
 
-    private final ExistAuthorIdValidator existAuthorIdValidator;
+    private final ExistAuthorValidator existAuthorValidator;
 
     @Override
     public void create(BookDTO bookDTO) {
-        existAuthorIdValidator.validate(bookDTO.getAuthorId());
+        existAuthorValidator.validate(bookDTO.getAuthor());
         creator.payload(bookDTO).execute();
     }
 
@@ -45,7 +48,7 @@ public class BookManager implements Manager<BookDTO, BookNewInfo> {
     @Override
     public void update(Long bookId, BookNewInfo bookNewInfo) {
         existBookIdValidator.validate(bookId);
-        existAuthorIdValidator.validate(bookNewInfo.getAuthorId());
+        existAuthorValidator.validate(bookNewInfo.getAuthor());
 
         updater.payload(bookId, bookNewInfo).execute();
     }
@@ -53,6 +56,12 @@ public class BookManager implements Manager<BookDTO, BookNewInfo> {
     @Override
     public void delete(Long bookId) {
         existBookIdValidator.validate(bookId);
+        deleter.payload(bookId).execute();
+    }
+
+    public void archive(Long bookId) {
+        existBookIdValidator.validate(bookId);
+        archiver.payload(bookId).execute();
         deleter.payload(bookId).execute();
     }
 }

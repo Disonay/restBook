@@ -21,7 +21,7 @@
     </div>
 
     <div class="form-element-button">
-      <button mat-raised-button (click)="onSubmit()" [disabled]="!authorForm.valid">Отправить
+      <button mat-raised-button (click)="onSubmit()" [disabled]="!authorForm.valid || loading">Отправить
         <mat-icon *ngIf="loading">
           <mat-spinner color="accent" diameter="20"></mat-spinner>
         </mat-icon>

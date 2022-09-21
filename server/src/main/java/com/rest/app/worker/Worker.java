@@ -1,5 +1,5 @@
 package com.rest.app.worker;
 
-public interface Worker<T> {
+public interface Worker {
     void execute();
 }

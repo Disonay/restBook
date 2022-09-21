@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class AuthorDeleter implements Worker<Long> {
+public class AuthorDeleter implements Worker {
     private final AuthorRepository authorRepository;
     private Long id;
 
-    public AuthorDeleter payload(Long data) {
+    public Worker payload(Long data) {
         this.id = data;
 
         return this;

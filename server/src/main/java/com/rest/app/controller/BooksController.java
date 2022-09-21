@@ -4,14 +4,11 @@ import com.rest.app.dto.book.BookDTO;
 import com.rest.app.dto.book.BookNewInfo;
 import com.rest.app.manager.BookManager;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/api/books")
 @RequiredArgsConstructor
 public class BooksController implements CrudlController<BookDTO, BookNewInfo>  {
@@ -31,10 +28,21 @@ public class BooksController implements CrudlController<BookDTO, BookNewInfo>  {
 
 
     public void update(Long bookId, BookNewInfo bookNewInfo) {
+        System.out.println(bookNewInfo.getAuthor());
         bookManager.update(bookId, bookNewInfo);
+
     }
 
-    public void delete(Long bookId) {
+    public void delete(Long bookId)
+    {
+        System.out.println("del");
         bookManager.delete(bookId);
     }
+
+    @DeleteMapping(value = "soft/{id}")
+    public void softDelete(@PathVariable("id") Long bookId) {
+        System.out.println("arch");
+        bookManager.archive(bookId);
+    }
+
 }

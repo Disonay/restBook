@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class AuthorCreator implements Worker<AuthorDTO> {
+public class AuthorCreator implements Worker {
     private final AuthorRepository authorRepository;
     private final AuthorMapper authorMapper;
     private AuthorDTO authorDTO;
 
-    public AuthorCreator payload(AuthorDTO data) {
+    public Worker payload(AuthorDTO data) {
         this.authorDTO = data;
 
         return this;

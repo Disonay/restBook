@@ -4,14 +4,12 @@ import com.rest.app.dto.author.AuthorDTO;
 import com.rest.app.dto.author.AuthorNewInfo;
 import com.rest.app.manager.AuthorManager;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/api/authors")
 @RequiredArgsConstructor
 public class AuthorsController implements CrudlController<AuthorDTO, AuthorNewInfo>{

@@ -12,13 +12,13 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class AuthorUpdater implements Worker<AuthorNewInfo> {
+public class AuthorUpdater implements Worker{
     private final AuthorRepository authorRepository;
     private Long authorId;
     private AuthorNewInfo authorNewInfo;
 
 
-    public Worker<AuthorNewInfo> payload(Long authorId, AuthorNewInfo data) {
+    public Worker payload(Long authorId, AuthorNewInfo data) {
         this.authorId = authorId;
         this.authorNewInfo = data;
 

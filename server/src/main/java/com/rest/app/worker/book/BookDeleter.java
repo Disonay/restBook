@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class BookDeleter implements Worker<Long> {
+public class BookDeleter implements Worker {
     private final BookRepository bookRepository;
     private Long id;
 

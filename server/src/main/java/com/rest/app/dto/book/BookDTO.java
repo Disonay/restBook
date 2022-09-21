@@ -1,6 +1,6 @@
 package com.rest.app.dto.book;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.rest.app.dto.author.AuthorDTO;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -9,11 +9,10 @@ import java.util.Date;
 
 @Data
 public class BookDTO {
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
     @NotNull
-    private Long authorId;
+    private AuthorDTO author;
 
     @NotNull
     private String title;

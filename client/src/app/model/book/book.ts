@@ -1,13 +1,15 @@
+import {Author} from "../author/author";
+
 export class Book {
-  constructor(id?: number, title?: string, authorId?: number, publicationDate?: Date) {
+  constructor(id?: number, title?: string, author?: Author, publicationDate?: Date) {
     this.id = id
     this.title = title
-    this.authorId = authorId
+    this.author = author
     this.publicationDate = publicationDate
   }
 
   id: number;
   title: string;
-  authorId: number;
+  author: Author;
   publicationDate: Date;
 }

@@ -26,6 +26,7 @@ public class AuthorEntity {
     @Column(name="middle_name", nullable = false, length = 50)
     private String middleName;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<BookEntity> books;
+
 }

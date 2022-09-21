@@ -4,9 +4,9 @@
     <div class="form-element">
       <mat-form-field appearance="fill">
         <mat-label>Автор</mat-label>
-        <mat-select formControlName="authorId">
+        <mat-select formControlName="author">
           <mat-option *ngFor="let author of authors"
-                      [value]="author.id" > {{author.surname + " " + author.name + " " + author.middleName}}</mat-option>
+                      [value]="author" > {{author.surname + " " + author.name + " " + author.middleName}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -23,7 +23,7 @@
       </mat-form-field>
     </div>
     <div class="form-element-button">
-      <button mat-raised-button (click)="onSubmit()" [disabled]="!bookForm.valid">Отправить
+      <button mat-raised-button (click)="onSubmit()" [disabled]="!bookForm.valid || loading">Отправить
         <mat-icon *ngIf="loading">
           <mat-spinner color="accent" diameter="20"></mat-spinner>
         </mat-icon>

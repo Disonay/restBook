@@ -30,11 +30,16 @@ export class BookFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      if (params["id"] && params["title"] && params["authorId"] && params["publicationDate"]) {
+      if (params["id"] && params["title"] && params["author"] && params["publicationDate"]) {
+        console.log(this.book)
         this.isUpdate = true
-        this.book = new Book(params["id"], params["title"], params["authorId"], params["publicationDate"])
+        this.book = new Book(params["id"], params["title"], params["author"], params["publicationDate"])
+        console.log(this.book)
       }
     });
+
+    console.log(this.book)
+    console.log(this.book)
 
     this.allAuthorsGetter.execute().subscribe(data => {
       this.authors = data
@@ -47,7 +52,7 @@ export class BookFormComponent implements OnInit {
     }
 
     this.bookForm = this.fb.group({
-      authorId: ['', Validators.required],
+      author: ['', Validators.required],
       title: ['', Validators.required],
       publicationDate: ['', Validators.required],
     });
