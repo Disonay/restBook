@@ -1,5 +1,6 @@
 package com.rest.app.entity;
 
+import com.rest.app.deleted.Deleted;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
@@ -8,7 +9,10 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "BOOK", indexes = @Index(name = "book_title_i", columnList = "title"))
+@Table(name = "BOOK", indexes = {
+        @Index(name = "book_title_i", columnList = "title"),
+        @Index(name = "book_del_i", columnList = "deleted")
+})
 @Validated
 @Setter
 @Getter
@@ -19,7 +23,7 @@ public class BookEntity {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", nullable = false)
     private AuthorEntity author;
 
@@ -28,4 +32,9 @@ public class BookEntity {
 
     @Column(name = "publication_date", nullable = false)
     private Date publicationDate;
+
+    @Column(name = "deleted", columnDefinition = "varchar(1) default 'N'")
+    @Enumerated(EnumType.STRING)
+    private Deleted deleted = Deleted.N;
+
 }

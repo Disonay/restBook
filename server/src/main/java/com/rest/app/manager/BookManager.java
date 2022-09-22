@@ -62,6 +62,5 @@ public class BookManager implements Manager<BookDTO, BookNewInfo> {
     public void archive(Long bookId) {
         existBookIdValidator.validate(bookId);
         archiver.payload(bookId).execute();
-        deleter.payload(bookId).execute();
     }
 }

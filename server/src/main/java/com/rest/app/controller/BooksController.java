@@ -35,13 +35,11 @@ public class BooksController implements CrudlController<BookDTO, BookNewInfo>  {
 
     public void delete(Long bookId)
     {
-        System.out.println("del");
         bookManager.delete(bookId);
     }
 
     @DeleteMapping(value = "soft/{id}")
     public void softDelete(@PathVariable("id") Long bookId) {
-        System.out.println("arch");
         bookManager.archive(bookId);
     }
 

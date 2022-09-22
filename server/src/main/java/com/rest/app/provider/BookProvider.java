@@ -25,6 +25,6 @@ public class BookProvider implements Provider<BookDTO> {
 
     @Override
     public List<BookDTO> getAllEntities() {
-        return bookMapper.bookToBookDto(bookRepository.findAll());
+        return bookMapper.bookToBookDto(bookRepository.findAllByDeletedIsFalse());
     }
 }

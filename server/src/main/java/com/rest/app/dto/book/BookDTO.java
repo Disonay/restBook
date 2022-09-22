@@ -20,4 +20,5 @@ public class BookDTO {
     @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date publicationDate;
+
 }

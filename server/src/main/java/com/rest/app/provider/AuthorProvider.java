@@ -21,7 +21,6 @@ public class AuthorProvider implements Provider<AuthorDTO>{
     public AuthorDTO getEntityById(Long authorId) {
         Optional<AuthorEntity> optionalAuthor = authorRepository.findById(authorId);
 
-
         return AuthorMapper.INSTANCE.authorToAuthorDto(optionalAuthor.get());
     }
 
