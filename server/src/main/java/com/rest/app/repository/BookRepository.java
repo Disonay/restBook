@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface BookRepository extends JpaRepository<BookEntity, Long> {
+public interface BookRepository extends JpaRepository<BookEntity, Long>, CustomBookRepository {
     @Modifying
     @Transactional
     @Query("UPDATE BookEntity bookEntity SET bookEntity.deleted = 'Y' WHERE bookEntity.id = ?1")

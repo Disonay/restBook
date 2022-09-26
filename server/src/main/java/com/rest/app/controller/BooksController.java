@@ -2,10 +2,13 @@ package com.rest.app.controller;
 
 import com.rest.app.dto.book.BookDTO;
 import com.rest.app.dto.book.BookNewInfo;
+import com.rest.app.dto.filter.FilterDTO;
 import com.rest.app.manager.BookManager;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -28,7 +31,6 @@ public class BooksController implements CrudlController<BookDTO, BookNewInfo>  {
 
 
     public void update(Long bookId, BookNewInfo bookNewInfo) {
-        System.out.println(bookNewInfo.getAuthor());
         bookManager.update(bookId, bookNewInfo);
 
     }
@@ -41,6 +43,11 @@ public class BooksController implements CrudlController<BookDTO, BookNewInfo>  {
     @DeleteMapping(value = "soft/{id}")
     public void softDelete(@PathVariable("id") Long bookId) {
         bookManager.archive(bookId);
+    }
+
+    @PostMapping(value = "filter", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<BookDTO> filter(@Valid @RequestBody FilterDTO filterDTO) {
+        return bookManager.filter(filterDTO);
     }
 
 }

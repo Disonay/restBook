@@ -1,4 +1,9 @@
 <div class="mat-elevation-z8 container">
+
+  <div class="table-container">
+    <app-filter-form (onFilter)="onFilter($event)"></app-filter-form>
+  </div>
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="id">
@@ -43,6 +48,7 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let book; columns: displayedColumns;"></tr>
+
   </table>
   <mat-paginator [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
 </div>

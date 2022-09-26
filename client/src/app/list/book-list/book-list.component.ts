@@ -5,6 +5,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {DeleteBookCommand} from "../../commands/delete/delete-book-command";
 import {ArchiveBookCommand} from "../../commands/archive/archive-book-command";
+import {FilterBookCommand} from "../../commands/filter/filter-book-command";
 
 @Component({
   selector: 'app-book-list',
@@ -15,12 +16,13 @@ export class BookListComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = ['id', 'name', 'author', 'publicationDate', 'menu'];
   dataSource: MatTableDataSource<Book> = new MatTableDataSource<Book>()
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  waitingBookId: number
+  waitingBookId: number;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private deleter: DeleteBookCommand,
-              private archiver: ArchiveBookCommand) {
+              private archiver: ArchiveBookCommand,
+              private filter: FilterBookCommand) {
   }
 
   ngOnInit(): void {
@@ -55,5 +57,14 @@ export class BookListComponent implements AfterViewInit, OnInit {
     }])
   }
 
+  onFilter(filter) {
+    this.filter.payload(filter).execute().subscribe(data => {
+      this.dataSource.data = data
+    })
+  }
+
+  refresh() {
+    window.location.reload();
+  }
 }
 

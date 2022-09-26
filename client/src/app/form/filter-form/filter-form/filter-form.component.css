@@ -1,0 +1,11 @@
+.filter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter mat-form-field {
+  padding-left: 1em;
+  padding-right: 1em;
+}

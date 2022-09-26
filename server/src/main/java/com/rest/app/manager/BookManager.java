@@ -2,6 +2,7 @@ package com.rest.app.manager;
 
 import com.rest.app.dto.book.BookDTO;
 import com.rest.app.dto.book.BookNewInfo;
+import com.rest.app.dto.filter.FilterDTO;
 import com.rest.app.provider.BookProvider;
 import com.rest.app.validation.author.ExistAuthorValidator;
 import com.rest.app.validation.book.ExistBookIdValidator;
@@ -62,5 +63,9 @@ public class BookManager implements Manager<BookDTO, BookNewInfo> {
     public void archive(Long bookId) {
         existBookIdValidator.validate(bookId);
         archiver.payload(bookId).execute();
+    }
+
+    public List<BookDTO> filter(FilterDTO filterDTO) {
+        return provider.filterBooks(filterDTO);
     }
 }

@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Book} from "../../model/book/book";
 import {environment} from "../../../environments/environment";
 import {Service} from "../service";
+import {Filter} from "../../model/filter/filter";
 
 @Injectable()
 export class BookService implements Service<Book>{
@@ -36,5 +37,9 @@ export class BookService implements Service<Book>{
 
   public update(id: number, book: Book) {
     return this.http.put(`${this.booksUrl}` + `${id}`, book)
+  }
+
+  public filter(filter: Filter) {
+    return this.http.post(`${this.booksUrl}` + "filter", filter)
   }
 }

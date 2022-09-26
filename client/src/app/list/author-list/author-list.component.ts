@@ -45,4 +45,5 @@ export class AuthorListComponent implements AfterViewInit, OnInit {
       middleName: author.middleName
     }])
   }
+
 }

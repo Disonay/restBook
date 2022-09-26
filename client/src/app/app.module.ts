@@ -28,6 +28,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import { AuthorListComponent } from './list/author-list/author-list.component';
 import { AuthorFormComponent } from './form/author-form/author-form.component';
 import {MatSelectModule} from "@angular/material/select";
+import { FilterFormComponent } from './form/filter-form/filter-form/filter-form.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {MatSelectModule} from "@angular/material/select";
     MenuComponent,
     AuthorListComponent,
     AuthorFormComponent,
+    FilterFormComponent,
   ],
   imports: [
     BrowserModule,

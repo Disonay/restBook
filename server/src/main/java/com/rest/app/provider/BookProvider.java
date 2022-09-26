@@ -1,6 +1,7 @@
 package com.rest.app.provider;
 
 import com.rest.app.dto.book.BookDTO;
+import com.rest.app.dto.filter.FilterDTO;
 import com.rest.app.entity.BookEntity;
 import com.rest.app.mapper.BookMapper;
 import com.rest.app.repository.BookRepository;
@@ -26,5 +27,16 @@ public class BookProvider implements Provider<BookDTO> {
     @Override
     public List<BookDTO> getAllEntities() {
         return bookMapper.bookToBookDto(bookRepository.findAllByDeletedIsFalse());
+    }
+
+    public List<BookDTO> filterBooks(FilterDTO filterDTO) {
+        bookRepository.findBooksByAuthorNameAndTitle(
+                filterDTO.getTitle(),
+                filterDTO.getName()
+        );
+        return bookMapper.bookToBookDto(bookRepository.findBooksByAuthorNameAndTitle(
+                filterDTO.getTitle(),
+                filterDTO.getName()
+        ));
     }
 }
