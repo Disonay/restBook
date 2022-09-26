@@ -2,7 +2,7 @@ package com.rest.app.worker.book;
 
 import com.rest.app.dto.book.BookDTO;
 import com.rest.app.mapper.BookMapper;
-import com.rest.app.repository.BookRepository;
+import com.rest.app.repository.book.BookRepository;
 import com.rest.app.worker.Worker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

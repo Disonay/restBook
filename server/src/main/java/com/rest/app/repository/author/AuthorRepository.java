@@ -1,4 +1,4 @@
-package com.rest.app.repository;
+package com.rest.app.repository.author;
 
 import com.rest.app.entity.AuthorEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -51,8 +51,8 @@ public class BooksController implements CrudlController<BookDTO, BookNewInfo>  {
     }
 
     @GetMapping(value = "search", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<BookDTO> search(@RequestParam("search") String search) {
-        return bookManager.search(search);
+    public List<BookDTO> search(@RequestParam("input") String input) {
+        return bookManager.search(input);
     }
 
 }

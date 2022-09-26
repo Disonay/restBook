@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Book} from "../../model/book/book";
 import {environment} from "../../../environments/environment";
@@ -38,7 +38,10 @@ export class BookService implements Service<Book>{
     return this.http.put(`${this.booksUrl}` + `${id}`, book)
   }
 
-  public filter(search: String) {
-    return this.http.get(`${this.booksUrl}` + "search/?search=" + search)
+  public filter(input: string) {
+    let filterParams = new HttpParams();
+    filterParams = filterParams.append("input", input);
+
+    return this.http.get(`${this.booksUrl}` + "search/", {params: filterParams})
   }
 }

@@ -7,12 +7,12 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class FilterBookCommand implements Command {
-  private filter: String;
+  private filter: string;
 
   constructor(private bookService: BookService) {
   }
 
-  payload(filter: String): Command {
+  payload(filter: string): Command {
     this.filter = filter;
     return this;
   }

@@ -2,7 +2,7 @@ package com.rest.app.worker.author;
 
 import com.rest.app.dto.author.AuthorDTO;
 import com.rest.app.mapper.AuthorMapper;
-import com.rest.app.repository.AuthorRepository;
+import com.rest.app.repository.author.AuthorRepository;
 import com.rest.app.worker.Worker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

@@ -4,7 +4,7 @@ import com.rest.app.dto.book.BookDTO;
 import com.rest.app.dto.filter.FilterDTO;
 import com.rest.app.entity.BookEntity;
 import com.rest.app.mapper.BookMapper;
-import com.rest.app.repository.BookRepository;
+import com.rest.app.repository.book.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -36,7 +36,7 @@ public class BookProvider implements Provider<BookDTO> {
         ));
     }
 
-    public List<BookDTO> searchBooks(String search) {
-        return bookMapper.bookToBookDto(bookRepository.findBooksByOneInput(search));
+    public List<BookDTO> searchBooks(String input) {
+        return bookMapper.bookToBookDto(bookRepository.findBooksByOneInput(input));
     }
 }

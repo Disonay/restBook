@@ -1,4 +1,4 @@
-package com.rest.app.repository;
+package com.rest.app.repository.book;
 
 import com.rest.app.entity.AuthorEntity;
 import com.rest.app.entity.BookEntity;
@@ -37,13 +37,13 @@ public class BookRepositoryImpl implements CustomBookRepository {
     }
 
     @Override
-    public List<BookEntity> findBooksByOneInput(String search) {
+    public List<BookEntity> findBooksByOneInput(String input) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<BookEntity> criteria = cb.createQuery(BookEntity.class);
         Root<BookEntity> root = criteria.from(BookEntity.class);
         Join<BookEntity, AuthorEntity> author = root.join(Book_.AUTHOR);
 
-        String[] tokens = search.split(" ");
+        String[] tokens = input.split(" ");
         List<Predicate> bookPredicates = new ArrayList<>();
         List<Predicate> authorPredicates = new ArrayList<>();
         for (String token: tokens) {

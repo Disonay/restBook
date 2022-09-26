@@ -3,7 +3,7 @@ package com.rest.app.validation.author;
 import com.rest.app.dto.author.AuthorDTO;
 import com.rest.app.exception.EntityNotFoundException;
 import com.rest.app.mapper.AuthorMapper;
-import com.rest.app.repository.AuthorRepository;
+import com.rest.app.repository.author.AuthorRepository;
 import com.rest.app.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
