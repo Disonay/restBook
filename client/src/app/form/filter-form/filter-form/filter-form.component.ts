@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-filter-form',
@@ -14,13 +14,12 @@ export class FilterFormComponent implements OnInit {
 
   ngOnInit() {
     this.filterForm = this.fb.group({
-      title: ['', Validators.required],
-      name: ['', Validators.required],
+      search: [''],
     });
   }
 
   onFiltered() {
     console.log(this.filterForm.value);
-    this.onFilter.emit(this.filterForm.value);
+    this.onFilter.emit(this.filterForm.value.search);
   }
 }

@@ -62,9 +62,5 @@ export class BookListComponent implements AfterViewInit, OnInit {
       this.dataSource.data = data
     })
   }
-
-  refresh() {
-    window.location.reload();
-  }
 }
 

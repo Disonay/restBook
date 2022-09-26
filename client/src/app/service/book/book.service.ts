@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Book} from "../../model/book/book";
 import {environment} from "../../../environments/environment";
 import {Service} from "../service";
-import {Filter} from "../../model/filter/filter";
 
 @Injectable()
 export class BookService implements Service<Book>{
@@ -39,7 +38,7 @@ export class BookService implements Service<Book>{
     return this.http.put(`${this.booksUrl}` + `${id}`, book)
   }
 
-  public filter(filter: Filter) {
-    return this.http.post(`${this.booksUrl}` + "filter", filter)
+  public filter(search: String) {
+    return this.http.get(`${this.booksUrl}` + "search/?search=" + search)
   }
 }

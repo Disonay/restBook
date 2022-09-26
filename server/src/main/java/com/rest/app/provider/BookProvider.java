@@ -30,13 +30,13 @@ public class BookProvider implements Provider<BookDTO> {
     }
 
     public List<BookDTO> filterBooks(FilterDTO filterDTO) {
-        bookRepository.findBooksByAuthorNameAndTitle(
-                filterDTO.getTitle(),
-                filterDTO.getName()
-        );
         return bookMapper.bookToBookDto(bookRepository.findBooksByAuthorNameAndTitle(
                 filterDTO.getTitle(),
                 filterDTO.getName()
         ));
+    }
+
+    public List<BookDTO> searchBooks(String search) {
+        return bookMapper.bookToBookDto(bookRepository.findBooksByOneInput(search));
     }
 }

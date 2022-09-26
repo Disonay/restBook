@@ -68,4 +68,8 @@ public class BookManager implements Manager<BookDTO, BookNewInfo> {
     public List<BookDTO> filter(FilterDTO filterDTO) {
         return provider.filterBooks(filterDTO);
     }
+
+    public List<BookDTO> search(String search) {
+        return provider.searchBooks(search);
+    }
 }
