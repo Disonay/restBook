@@ -7,3 +7,7 @@ spring:
     date-format: yyyy-MM-dd
   profiles:
     active: '@spring.profiles.active@'
+
+timeout: 1200000
+api:
+  url: https://learning.oreilly.com/api/v2/search?page=

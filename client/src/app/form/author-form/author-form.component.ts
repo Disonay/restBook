@@ -41,7 +41,7 @@ export class AuthorFormComponent implements OnInit {
     this.authorForm = this.fb.group({
       surname: ['', Validators.required],
       name: ['', Validators.required],
-      middleName: ['', Validators.required],
+      middleName: [''],
     });
   }
 
