@@ -1,0 +1,15 @@
+server:
+  port: 8443
+  ssl:
+    key-store-password: changeit
+    key-store: file:etc/cas/thekeystore
+spring:
+  main:
+    allow-bean-definition-overriding: true
+cas:
+  service-registry:
+    json:
+      location: file:src/main/resources/services
+  http-web-request:
+    cors:
+      enabled: true

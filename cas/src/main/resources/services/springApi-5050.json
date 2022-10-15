@@ -1,0 +1,6 @@
+{
+  "@class" : "org.apereo.cas.services.CasRegisteredService",
+  "serviceId" : "http://localhost:5050/login/cas",
+  "name" : "springApi",
+  "id" : 5050
+}
