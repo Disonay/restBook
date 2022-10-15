@@ -1,4 +1,4 @@
-package com.rest.app.rest.config;
+package com.rest.app.general.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,9 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**").allowedMethods("GET", "POST", "DELETE", "PUT");
+                registry.addMapping("/**")
+                        .allowedMethods("*")
+                ;
             }
         };
     }

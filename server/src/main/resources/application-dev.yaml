@@ -22,3 +22,8 @@ spring:
     enabled: false
 server:
   port: 5050
+
+
+cas-login: https://localhost:8443/cas/login
+cas-ticket-validate: https://localhost:8443/cas
+cas-service: http://localhost:5050/login/cas
