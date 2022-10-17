@@ -2,7 +2,7 @@ package com.rest.app.rest.validation.book;
 
 import com.rest.app.rest.exception.EntityNotFoundException;
 import com.rest.app.rest.repository.book.BookRepository;
-import com.rest.app.rest.validation.Validator;
+import com.rest.app.general.Validator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 @RequiredArgsConstructor
 public class ApiService {
     private final RestTemplateBuilder restTemplateBuilder;
-    private final PageProvider provider;
+    private final PageProvider pageProvider;
     private final PageSaver pageSaver;
 
     @Value("${api.url}")
@@ -23,9 +23,9 @@ public class ApiService {
     public Results getBooks() {
         RestTemplate restTemplate = restTemplateBuilder.build();
         ResponseEntity<Results> responseEntity = restTemplate.getForEntity(
-                url + (provider.getLastPage() + 1), Results.class
+                url + (pageProvider.getLastPage() + 1), Results.class
         );
-        pageSaver.payload(provider.getLastPage() + 1).execute();
+        pageSaver.payload(pageProvider.getLastPage() + 1).execute();
 
         return responseEntity.getBody();
     }

@@ -2,7 +2,7 @@ package com.rest.app.rest.validation.author;
 
 import com.rest.app.rest.exception.EntityAlreadyExistException;
 import com.rest.app.rest.repository.author.AuthorRepository;
-import com.rest.app.rest.validation.Validator;
+import com.rest.app.general.Validator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -4,7 +4,7 @@ import com.rest.app.rest.dto.book.BookNewInfo;
 import com.rest.app.rest.entity.BookEntity;
 import com.rest.app.rest.mapper.AuthorMapper;
 import com.rest.app.rest.repository.book.BookRepository;
-import com.rest.app.general.Worker;
+import com.rest.app.general.VoidWorker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,14 +13,14 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class BookUpdater implements Worker {
+public class BookUpdater implements VoidWorker {
     private final BookRepository bookRepository;
     private final AuthorMapper authorMapper;
     private Long bookId;
     private BookNewInfo bookNewInfo;
 
 
-    public Worker payload(Long bookId, BookNewInfo data) {
+    public VoidWorker payload(Long bookId, BookNewInfo data) {
         this.bookId = bookId;
         this.bookNewInfo = data;
 

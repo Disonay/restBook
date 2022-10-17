@@ -3,18 +3,18 @@ package com.rest.app.rest.worker.author;
 import com.rest.app.rest.dto.author.AuthorDTO;
 import com.rest.app.rest.mapper.AuthorMapper;
 import com.rest.app.rest.repository.author.AuthorRepository;
-import com.rest.app.general.Worker;
+import com.rest.app.general.VoidWorker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class AuthorCreator implements Worker {
+public class AuthorCreator implements VoidWorker {
     private final AuthorRepository authorRepository;
     private final AuthorMapper authorMapper;
     private AuthorDTO authorDTO;
 
-    public Worker payload(AuthorDTO data) {
+    public VoidWorker payload(AuthorDTO data) {
         this.authorDTO = data;
 
         return this;

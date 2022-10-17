@@ -1,13 +1,13 @@
 package com.rest.app.rest.worker.book;
 
 import com.rest.app.rest.repository.book.BookRepository;
-import com.rest.app.general.Worker;
+import com.rest.app.general.VoidWorker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class BookDeleter implements Worker {
+public class BookDeleter implements VoidWorker {
     private final BookRepository bookRepository;
     private Long id;
 

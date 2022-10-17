@@ -4,7 +4,7 @@ import com.rest.app.rest.dto.author.AuthorDTO;
 import com.rest.app.rest.exception.EntityNotFoundException;
 import com.rest.app.rest.mapper.AuthorMapper;
 import com.rest.app.rest.repository.author.AuthorRepository;
-import com.rest.app.rest.validation.Validator;
+import com.rest.app.general.Validator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
